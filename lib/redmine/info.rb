@@ -3,7 +3,8 @@ module Redmine
     class << self
       def app_name; 'Redmine' end
       def url; 'http://www.redmine.org/' end
-      def help_url; 'http://www.redmine.org/guide' end
+#      def help_url; 'http://www.redmine.org/guide' end
+      def help_url; 'http://gp.utn.edu.ar/projects/rectorado-secretaria-de-tic/wiki' end
       def versioned_name; "#{app_name} #{Redmine::VERSION}" end
 
       def environment

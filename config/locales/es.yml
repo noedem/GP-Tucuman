@@ -300,7 +300,7 @@ es:
   field_language: Idioma
   field_last_login_on: Última conexión
   field_lastname: Apellido
-  field_login: Identificador
+  field_login: Email
   field_mail: Correo electrónico
   field_mail_notification: Notificaciones por correo
   field_max_length: Longitud máxima
@@ -506,7 +506,7 @@ es:
   label_loading: Cargando...
   label_logged_as: Conectado como
   label_login: Iniciar sesión
-  label_logout: Terminar sesión
+  label_logout: Cerrar sesión
   label_max_size: Tamaño máximo
   label_me: yo mismo
   label_member: Miembro
