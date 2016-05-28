@@ -104,10 +104,18 @@ class Issue < ActiveRecord::Base
   # Keep it at the end of after_save callbacks
   after_save :clear_assigned_to_was
 
-  before_save :default_values
+  before_save :valor_peso_de_accion
 
-  def default_values
-    self.valor_peso = 100
+  def valor_peso_de_accion
+    if self.tracker_id == 9
+      self.valor_peso = nil
+    else
+      self.valor_peso = 100
+      accion = Issue.where(id: self.parent_id)
+      accion.each do |acc|
+        acc.valor_peso = 100
+      end
+    end
   end
 
   # Returns a SQL conditions string used to find all issues visible by the specified user
