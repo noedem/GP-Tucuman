@@ -71,7 +71,7 @@
 <% end %>
 
 <div id="csv-export-options" style="display:none;">
-  <h3 class="title"><%= l(:label_export_options, :export_format => 'CSV') %></h3>  
+  <h3 class="title"><%= l(:label_export_options, :export_format => 'CSV') %></h3>
   <%= form_tag(params.merge({:format => 'csv',:page=>nil}), :method => :get, :id => 'csv-export-form') do %>
   <p>
     <label><%= radio_button_tag 'columns', '', true %> <%= l(:description_selected_columns) %></label><br />

@@ -104,6 +104,12 @@ class Issue < ActiveRecord::Base
   # Keep it at the end of after_save callbacks
   after_save :clear_assigned_to_was
 
+  before_save :default_values
+
+  def default_values
+    self.valor_peso = 100
+  end
+
   # Returns a SQL conditions string used to find all issues visible by the specified user
   def self.visible_condition(user, options={})
     Project.allowed_to_condition(user, :view_issues, options) do |role, user|
