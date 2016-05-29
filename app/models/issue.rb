@@ -20,6 +20,8 @@ class Issue < ActiveRecord::Base
   include Redmine::Utils::DateCalculation
   include Redmine::I18n
 
+  attr_accessible :valor_peso
+
   belongs_to :project
   belongs_to :tracker
   belongs_to :status, :class_name => 'IssueStatus', :foreign_key => 'status_id'
@@ -104,16 +106,14 @@ class Issue < ActiveRecord::Base
   # Keep it at the end of after_save callbacks
   after_save :clear_assigned_to_was
 
-  before_save :valor_peso_de_accion
+  before_save :set_valor_peso
 
-  def valor_peso_de_accion
-    if self.tracker_id == 9
+  def set_valor_peso
+    if self.tracker_id == 9 #|| self.tracker_id == 11
       self.valor_peso = nil
     else
-      self.valor_peso = 100
-      accion = Issue.where(id: self.parent_id)
-      accion.each do |acc|
-        acc.valor_peso = 100
+      if Issue.where(parent_id: Issue.last.parent_id).count == 0
+        self.valor_peso = 100
       end
     end
   end
