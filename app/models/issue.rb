@@ -113,12 +113,15 @@ class Issue < ActiveRecord::Base
     if self.tracker_id == 9 || self.tracker_id == 11
       self.valor_peso = nil
     elsif Issue.where(parent_id: padre.id).count == 0
-        self.valor_peso = 100
+      self.valor_peso = 100
     elsif Issue.where(parent_id: padre.id).count == 1
-          #ind2 = Issue.where(parent_id: padre.id).last
-          #valor_nuevo = 100 - ind2.valor_peso
-          #ind1 = Issue.where(parent_id: padre.id).first
-          #ind1.update_attribute(:valor_peso, valor_nuevo)
+  #    binding.pry
+  #  ind2 = Issue.where(parent_id: padre.id).last
+    valor_nuevo = 100 - self.valor_peso
+    ind1 = Issue.where(parent_id: padre.id).first
+    ind1.update_column(:valor_peso, valor_nuevo)
+    elsif Issue.where(parent_id: padre.id).count > 1
+      self.valor_peso = 100
     end
   end
 
