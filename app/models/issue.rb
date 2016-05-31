@@ -21,6 +21,7 @@ class Issue < ActiveRecord::Base
   include Redmine::I18n
 
   attr_accessible :valor_peso
+  validates :valor_peso, :inclusion => { :in => (0..100).to_a, :allow_nil => true }
 
   belongs_to :project
   belongs_to :tracker
@@ -115,13 +116,15 @@ class Issue < ActiveRecord::Base
     elsif Issue.where(parent_id: padre.id).count == 0
       self.valor_peso = 100
     elsif Issue.where(parent_id: padre.id).count == 1
-  #    binding.pry
-  #  ind2 = Issue.where(parent_id: padre.id).last
-    valor_nuevo = 100 - self.valor_peso
-    ind1 = Issue.where(parent_id: padre.id).first
-    ind1.update_column(:valor_peso, valor_nuevo)
+      #binding.pry
+      #ind2 = Issue.where(parent_id: padre.id).last
+      if self.valor_peso <= 100
+        valor_nuevo = 100 - self.valor_peso
+        ind1 = Issue.where(parent_id: padre.id).first
+        ind1.update_column(:valor_peso, valor_nuevo)
+      end
     elsif Issue.where(parent_id: padre.id).count > 1
-      self.valor_peso = 100
+      self.valor_peso = 0
     end
   end
 

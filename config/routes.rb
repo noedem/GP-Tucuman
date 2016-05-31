@@ -18,6 +18,9 @@
 RedmineApp::Application.routes.draw do
   root :to => 'welcome#index', :as => 'home'
 
+  match '/popup', :to => redirect('/popup.html')
+  match "/facebook" => redirect("http://www.facebook.com"), :as => 'facebook'
+
   match 'login', :to => 'account#login', :as => 'signin', :via => [:get, :post]
   match 'logout', :to => 'account#logout', :as => 'signout', :via => [:get, :post]
   match 'account/register', :to => 'account#register', :via => [:get, :post], :as => 'register'
@@ -149,7 +152,7 @@ RedmineApp::Application.routes.draw do
         end
       end
     end
-  
+
     match 'wiki/index', :controller => 'wiki', :action => 'index', :via => :get
     resources :wiki, :except => [:index, :new, :create], :as => 'wiki_page' do
       member do
