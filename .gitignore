@@ -5,7 +5,6 @@
 /config/additional_environment.rb
 /config/email.yml
 /config/initializers/session_store.rb
-/config/initializers/secret_token.rb
 /coverage
 /db/*.db
 /db/*.sqlite3
@@ -31,6 +30,6 @@
 /vendor/cache
 /vendor/rails
 *.rbc
-
+/Gemfile.lock
 /.bundle
 /Gemfile.local
