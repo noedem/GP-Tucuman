@@ -1,0 +1,10 @@
+production:
+    email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      address: "exchange.utn.edu.ar"
+      port: 25
+      authentication: :login
+      domain: 'rec.utn.edu.ar'
+      user_name: 'gp@rec.utn.edu.ar'
+      password: 'Qosqo2015!'

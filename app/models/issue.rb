@@ -124,7 +124,7 @@ class Issue < ActiveRecord::Base
         ind1.update_column(:valor_peso, valor_nuevo)
       end
     elsif Issue.where(parent_id: padre.id).count > 1
-      self.valor_peso = 0
+      Issue.where(parent_id: Issue.where(tracker_id: 9).last.id).count > 1
     end
   end
 

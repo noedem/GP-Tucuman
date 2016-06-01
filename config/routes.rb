@@ -18,8 +18,7 @@
 RedmineApp::Application.routes.draw do
   root :to => 'welcome#index', :as => 'home'
 
-  match '/popup', :to => redirect('/popup.html')
-  match "/facebook" => redirect("http://www.facebook.com"), :as => 'facebook'
+  #match '/issues/update_valor_peso', :to => 'issues#update_valor_peso'
 
   match 'login', :to => 'account#login', :as => 'signin', :via => [:get, :post]
   match 'logout', :to => 'account#logout', :as => 'signout', :via => [:get, :post]

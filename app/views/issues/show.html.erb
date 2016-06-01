@@ -1,4 +1,4 @@
-<%= render :partial => 'action_menu' %>
+<% render :partial => 'action_menu' %>
 
 <h2><%= issue_heading(@issue) %></h2>
 
@@ -106,7 +106,6 @@ end %>
 <% end %>
 
 </div>
-
 <% if @changesets.present? %>
 <div id="issue-changesets">
 <h3><%=l(:label_associated_revisions)%></h3>
@@ -115,10 +114,10 @@ end %>
 <% end %>
 
 <% if @journals.present? %>
-<div id="history">
-<h3><%=l(:label_history)%></h3>
-<%= render :partial => 'history', :locals => { :issue => @issue, :journals => @journals } %>
-</div>
+  <div id="history">
+    <h3><%=l(:label_history)%></h3>
+    <% render :partial => 'history', :locals => { :issue => @issue, :journals => @journals } %>
+  </div>
 <% end %>
 
 

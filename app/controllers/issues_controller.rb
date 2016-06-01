@@ -53,6 +53,9 @@ class IssuesController < ApplicationController
   helper :timelog
   include Redmine::Export::PDF
 
+  def update_valor_peso
+  end
+
   def index
     retrieve_query
     sort_init(@query.sort_criteria.empty? ? [['id', 'desc']] : @query.sort_criteria)
